@@ -28,7 +28,7 @@ def setup_db():
 
 @cmd.command()
 def version():
-    from my_sdk.version import __version__
+    from ipa.version import __version__
 
     print(__version__)
 

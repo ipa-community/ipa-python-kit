@@ -2,7 +2,7 @@
 
 datas=[
     ("src/conf","conf"),
-    ("src/my_sdk","my_sdk"),
+    ("src/ipa","ipa"),
     ("src/biz","biz"),
     ("alembic","alembic"),
     ("alembic.ini","."),
