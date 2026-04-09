@@ -1,4 +1,12 @@
-# pyproject-tmpl
+# ipa-python-kit
+
+## usage
+
+`import ipa`
+
+or
+
+`from ipa.xx import yy`
 
 ## features
 

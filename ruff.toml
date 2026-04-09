@@ -21,4 +21,5 @@ ignore = [
     "PLW1641", # 未实现hash方法
     "RUF012",  # docs必须前缀加个r
     "PLC0415", # top-level import
+    "PLR0913", # too many arguments
 ]
