@@ -2,7 +2,7 @@
 
 ## features
 
-1. pytest
+1. pytest & pytest-cov
 2. pre-commit
 3. darker for code format
 4. ruff for lint
@@ -30,6 +30,7 @@ before you start:
 ### unit test
 
 `uv run -m pytest`
+> `htmlcov` folder contains html coverage report.
 
 ### run cli
 

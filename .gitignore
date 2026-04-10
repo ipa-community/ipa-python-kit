@@ -4,6 +4,8 @@ dist
 build
 data
 *.log
+*.log.*
+.coverage
 
 **/*.egg-info
 .pypirc
