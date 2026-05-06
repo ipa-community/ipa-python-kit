@@ -55,3 +55,6 @@ class IAppConfig(ABC):
 
     def get_sidecar_dir(self, *args, **kwargs) -> Optional[Path]:
         raise NotImplementedError()
+
+    def get_result_dir(self, *args, **kwargs) -> Optional[Path]:
+        raise NotImplementedError()
