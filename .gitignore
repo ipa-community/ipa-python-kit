@@ -11,5 +11,7 @@ data
 .pypirc
 
 src/ipa/version.py
+daemon.pid
+*.pid
 
 !scripts/**

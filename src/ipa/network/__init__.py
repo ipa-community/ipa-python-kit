@@ -1,4 +1,10 @@
-from typing import Any, Dict, List, Literal, Optional, Union
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any, Dict, List, Literal, Optional, Union
+
+if TYPE_CHECKING:
+    import networkx as nx
+    from pyecharts.charts import Graph, Sankey, Tree
 
 from ipa.data_type import Point
 
@@ -92,9 +98,7 @@ def to_grid(
     return grid
 
 
-import networkx as nx
 from pyecharts import options as opts
-from pyecharts.charts import Graph, Sankey, Tree
 
 
 def nx_digraph_to_graph(
@@ -107,6 +111,8 @@ def nx_digraph_to_graph(
     virtual_root_id: Optional[str] = None,
     **kwargs,
 ) -> Graph:
+    import networkx as nx
+    from pyecharts.charts import Graph
     """
     将 networkx.DiGraph 转换为 Pyecharts Graph 图表
 
@@ -183,6 +189,8 @@ def nx_digraph_to_tree(
     initial_tree_depth: int | None = None,
     tooltip_opts=opts.TooltipOpts(trigger="item", formatter="{b}"),
 ) -> Tree:
+    import networkx as nx
+    from pyecharts.charts import Tree
     """
     将树状结构的 networkx.DiGraph 转换为 Pyecharts Tree 图表
 
@@ -252,6 +260,8 @@ def nx_digraph_to_sankey(
     level_key: str = None,
     **kwargs,
 ) -> Sankey:
+    import networkx as nx
+    from pyecharts.charts import Sankey
     """
     将 networkx.DiGraph 转换为 Pyecharts Sankey 图（适用于有向无环图DAG）
 

@@ -1,10 +1,6 @@
 import inspect
 from typing import Iterable
 
-import matplotlib.pyplot as plt
-import networkx as nx
-from networkx.drawing.nx_agraph import graphviz_layout
-
 
 def mro_tree(cls):
     """把 inspect.getclasstree 结果扁平化并返回父->子边"""
@@ -36,6 +32,10 @@ def mro_tree(cls):
 
 
 def draw_mro_tree(*cls_list, use_graphviz=False):
+    import matplotlib.pyplot as plt
+    import networkx as nx
+    from networkx.drawing.nx_agraph import graphviz_layout
+
     for cls in cls_list:
         edges = mro_tree(cls)
         G = nx.DiGraph()

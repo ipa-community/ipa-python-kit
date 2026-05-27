@@ -1,8 +1,6 @@
 import logging
 from importlib import import_module
-from typing import Callable, Optional, Set, Tuple
-
-from watchfiles import Change, PythonFilter, awatch
+from typing import Callable, Optional
 
 
 def try_hot_reload(name, package: Optional[str] = None):
@@ -24,12 +22,12 @@ def try_hot_reload(name, package: Optional[str] = None):
         logging.warning("failed to reload: %s", e)
 
 
-async def watch_python_dir(
-    dir: str, on_change: Callable[[Set[Tuple[Change, str]]], None]
-):
+async def watch_python_dir(dir: str, on_change: Callable):
     """
     这是一个使用样例，功能并不通用
     """
+    from watchfiles import Change, PythonFilter, awatch
+
     logging.info("watch files in %s", dir)
     async for change in awatch(str(dir), watch_filter=PythonFilter()):
         logging.info("change detected:%s", change)
