@@ -77,7 +77,7 @@ def test_mro():
             # ComplexClass.__init__(self, **kwargs)
 
     try:
-        from ipa.visualization import draw_mro_tree
+        from ipa.viz import draw_mro_tree
 
         draw_mro_tree(Combined, Combined2)
 

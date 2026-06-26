@@ -7,8 +7,6 @@ from pathlib import Path
 from typing import Dict, List, Optional, Type, Union
 from uuid import uuid4
 
-from platformdirs import user_data_dir
-
 from .util import add_formatter_if_not, format_filename, format_level
 
 
@@ -18,6 +16,8 @@ class LoggerBuilder:
     """
 
     def __init__(self, **kwargs) -> None:
+        from platformdirs import user_data_dir
+
         self.dir(Path(user_data_dir()) / "logs").name("root").level(
             logging.WARNING
         ).encoding("utf-8").backup_count(5).rotation_when("h").max_bytes(

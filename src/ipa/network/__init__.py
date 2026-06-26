@@ -98,9 +98,6 @@ def to_grid(
     return grid
 
 
-from pyecharts import options as opts
-
-
 def nx_digraph_to_graph(
     G: nx.DiGraph,
     title: Optional[str] = None,
@@ -112,6 +109,7 @@ def nx_digraph_to_graph(
     **kwargs,
 ) -> Graph:
     import networkx as nx
+    from pyecharts import options as opts
     from pyecharts.charts import Graph
     """
     将 networkx.DiGraph 转换为 Pyecharts Graph 图表
@@ -187,10 +185,14 @@ def nx_digraph_to_tree(
     default_name: str = "node",
     virtual_root_id: Optional[str] = None,
     initial_tree_depth: int | None = None,
-    tooltip_opts=opts.TooltipOpts(trigger="item", formatter="{b}"),
+    tooltip_opts=None,
 ) -> Tree:
     import networkx as nx
+    from pyecharts import options as opts
     from pyecharts.charts import Tree
+
+    if tooltip_opts is None:
+        tooltip_opts = opts.TooltipOpts(trigger="item", formatter="{b}")
     """
     将树状结构的 networkx.DiGraph 转换为 Pyecharts Tree 图表
 
@@ -261,6 +263,7 @@ def nx_digraph_to_sankey(
     **kwargs,
 ) -> Sankey:
     import networkx as nx
+    from pyecharts import options as opts
     from pyecharts.charts import Sankey
     """
     将 networkx.DiGraph 转换为 Pyecharts Sankey 图（适用于有向无环图DAG）

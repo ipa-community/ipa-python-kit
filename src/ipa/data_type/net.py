@@ -1,8 +1,10 @@
 import logging
-from typing import Generic, Literal, Optional, Union
+from typing import TYPE_CHECKING, Generic, Literal, Optional, Union
 
-import requests
 from pydantic import BaseModel
+
+if TYPE_CHECKING:
+    import requests
 
 from .base import DEFAULT_PYDANTIC_MODEL_CONFIG, T
 
@@ -32,8 +34,9 @@ class ApiResponse(BaseModel, Generic[T]):
 
     @staticmethod
     def from_http_response(
-        r: requests.Response, content_type: Optional[Literal["json", "text"]] = None
+        r: "requests.Response", content_type: Optional[Literal["json", "text"]] = None
     ):
+        import requests
         ct = content_type or r.headers.get("content-type") or ""
         try:
             data = r.json() if "json" in ct else r.text

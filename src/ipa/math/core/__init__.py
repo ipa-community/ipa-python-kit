@@ -1,7 +1,7 @@
 import math
 from typing import Optional
 
-from ..data_type.point import Point
+from ipa.data_type.point import Point
 
 
 def manhattan_distance(start_point: Point, end_point: Point) -> float:

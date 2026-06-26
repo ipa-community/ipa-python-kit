@@ -3,7 +3,7 @@ from typing import List, Union
 
 import i18n
 
-from .locales import *
+from ipa.i18n.locales import *
 
 INNER_LOCALES_DIR = Path(__file__).parent.joinpath("locales")
 
