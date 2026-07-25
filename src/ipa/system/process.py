@@ -15,7 +15,10 @@ def find_process_on_port(port: int):
     for proc in psutil.process_iter(["pid", "name", "cmdline"]):
         if not proc.pid:
             continue
-        connections = proc.net_connections(kind="inet")
+        try:
+            connections = proc.net_connections(kind="inet")
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
+            continue
         for conn in connections:
             if not conn.laddr:
                 continue
@@ -63,7 +66,10 @@ def find_all_process_on_port(port: int) -> List[psutil.Process]:
     for proc in psutil.process_iter(["pid", "name", "cmdline"]):
         if not proc.pid:
             continue
-        connections = proc.net_connections(kind="inet")
+        try:
+            connections = proc.net_connections(kind="inet")
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
+            continue
         for conn in connections:
             if not conn.laddr:
                 continue
@@ -120,6 +126,11 @@ def kill_all_process_on_port(port, max_try: Optional[int] = 1) -> Optional[int]:
                 p.kill()
                 logging.info("process on port %s been killed: %s", port, pid)
                 return pid
+            except psutil.AccessDenied:
+                logging.warning(
+                    "permission denied to kill process %s on port %s, skipping", pid, port
+                )
+                return None
             except Exception as e:
                 try_count += 1
                 logging.warning(
