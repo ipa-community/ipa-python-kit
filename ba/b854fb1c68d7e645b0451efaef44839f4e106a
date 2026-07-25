@@ -1,0 +1,21 @@
+src/ipa/system/process.py
+  s_d6a0ee13a3175c::t_e8ad1ff0d1e184 69-72
+  s_d6a0ee13a3175c::t_69556000a9c8fc 129-133
+  s_d6a0ee13a3175c::t_05c5f9ac7cc467 18-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "bab854fb1c68d7e645b0451efaef44839f4e106a",
+  "prompts": {},
+  "sessions": {
+    "s_d6a0ee13a3175c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_0666166d5ffeMJ82FyhF7MjEOT",
+        "model": "deepseek-v4-flash-free"
+      },
+      "human_author": "xdewx <present150608@sina.com>"
+    }
+  }
+}
